@@ -1,0 +1,28 @@
+.app {
+  #header {
+    border-bottom: 1px solid #dbdbdb;
+  }
+
+  #content {
+    grid-area: content;
+    background-color: #FAFAFA;
+
+  }
+
+  #footer {
+    grid-area: footer;
+
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+  "header header header"
+  "content content content"
+  "footer footer footer";
+  width: 975px;
+  max-width: 100%;
+  margin: 0px auto;
+}

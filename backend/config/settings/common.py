@@ -118,4 +118,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 INTERNAL_IPS = []
 
-AUTH_USER_MODEL = "accounts.user"
+AUTH_USER_MODEL = "accounts.User"

@@ -28,12 +28,16 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # Third Apps
+    "corsheaders",
     "rest_framework",
     # Local Apps
     "accounts",
 ]
 
 MIDDLEWARE = [
+    # third apps
+    "corsheaders.middleware.CorsMiddleware",
+    # django apps
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -120,3 +124,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 INTERNAL_IPS = []
 
 AUTH_USER_MODEL = "accounts.User"
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+]

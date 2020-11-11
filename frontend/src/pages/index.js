@@ -7,9 +7,9 @@ import AccountsRoutes from "./accounts/index";
 
 export default function Root() {
     return (
-        <div>
+        <>
             <Route exact path="/" component={Home}/>
             <Route path="/accounts" component={AccountsRoutes}/>
-        </div>
+        </>
     );
 }

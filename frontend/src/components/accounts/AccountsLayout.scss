@@ -1,0 +1,45 @@
+.contents {
+
+}
+
+.footer {
+  width: 100%; height: 170px; padding-bottom: 20px;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  .store{
+    width:350px;
+    p{
+      text-align: center; font-weight:500;
+    }
+    .store-link{
+      margin-top:10px;
+      display:flex; justify-content: center;
+      img{
+        width:135px;
+      }
+      img:first-child{
+        margin-right: 5px;
+      }
+      img.google{
+        margin-left:5px;
+      }
+    }
+  }
+
+  .info {
+    margin-top: 60px;
+    width: 540px;
+    color:#8e8e8e; font-size:12px; line-height:14px;
+    .nav {
+      display:flex;
+      justify-content: space-around;
+      align-items: flex-start;
+      width:100%;
+    }
+    .copyright{
+      margin-top:2em;
+      margin-bottom:30px;
+      width:100%;
+      text-align:center;
+    }
+  }
+}

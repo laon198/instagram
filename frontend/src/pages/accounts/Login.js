@@ -1,9 +1,9 @@
 import React from "react";
+import AccountsCard from "../../components/accounts/AccountsCard";
 
-export default function Login(){
-    return(
+export default function Login() {
+    return (
         <div>
-            eogin
         </div>
     );
 }

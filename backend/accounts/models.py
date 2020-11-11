@@ -16,7 +16,7 @@ class User(AbstractUser):
                 regex="^010-?[1-9]\\d{3}-?\\rd{4}$",
                 message="Please check your phone number",
             ),
-        ],  # FIXME validator
+        ],
     )
 
 

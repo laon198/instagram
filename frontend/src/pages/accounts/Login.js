@@ -1,9 +1,11 @@
 import React from "react";
-import AccountsCard from "../../components/accounts/AccountsCard";
+import LoginCard from "../../components/accounts/LoginCard";
+import "./Login.scss";
 
 export default function Login() {
     return (
-        <div>
+        <div className="login">
+            <LoginCard />
         </div>
     );
 }

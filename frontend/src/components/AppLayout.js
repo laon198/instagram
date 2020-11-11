@@ -13,12 +13,11 @@ export default function AppLayout({children}) {
             </div>
             <div id="content">
                 <div className="container">
-                    content
+                    {children}
                 </div>
             </div>
             <div id="footer">
                 <div className="container">
-                    footer
                 </div>
             </div>
         </div>

@@ -3,11 +3,15 @@ import LogoImg from "../assets/LogoImg.png";
 import "./Header.scss";
 import {Input} from "antd";
 import {MailOutlined, UserOutlined, HomeFilled, CompassOutlined, HeartOutlined} from "@ant-design/icons";
+import {Link} from "react-router-dom";
 
 export default function Header() {
     return (
         <div className="header">
-            <h1 className="page-title"><img src={LogoImg} alt="logo"/>
+            <h1 className="page-title">
+                <Link to="/">
+                    <img src={LogoImg} alt="logo"/>
+                </Link>
             </h1>
             <div className="search">
                 <Input.Search
@@ -16,11 +20,13 @@ export default function Header() {
                 />
             </div>
             <div className="top-nav">
-                <HomeFilled style={{fontSize:"23px", margin:"0.5em"}}/>
-                <MailOutlined style={{fontSize:"23px", margin:"0.5em"}}/>
-                <CompassOutlined style={{fontSize:"23px", margin:"0.5em"}}/>
-                <HeartOutlined style={{fontSize:"23px", margin:"0.5em"}}/>
-                <UserOutlined style={{fontSize:"23px", margin:"0.5em"}}/>
+                <Link to="/">
+                    <HomeFilled className="icons"/>
+                </Link>
+                <MailOutlined className="icons"/>
+                <CompassOutlined className="icons"/>
+                <HeartOutlined className="icons"/>
+                <UserOutlined className="icons"/>
             </div>
         </div>
 

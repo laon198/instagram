@@ -1,0 +1,68 @@
+.logo {
+  margin-bottom: 30px;
+  margin-top:30px;
+}
+.input{
+  margin-bottom:0.5em; background-color:#fafafa;
+}
+.password{
+  margin-bottom:1em; background-color:#fafafa;
+}
+
+.or {
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+
+  .beforeline {
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: #dbdbdb;
+    height: 1px;
+    position: relative;
+    top: .7em;
+  }
+
+  .main {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #8e8e8e;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+
+  .afterline {
+    flex-grow: 1;
+    flex-shrink: 1;
+    background-color: #dbdbdb;
+    height: 1px;
+    position: relative;
+    top: .7em;
+
+  }
+}
+
+.facebook_login {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+
+  .facebook_desc {
+    font-size: 14px;
+    font-weight: bold;
+    color: #385185;
+    margin-left: 0.5em;
+  }
+}
+
+.forgot_pwd {
+  text-align: center;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+

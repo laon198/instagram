@@ -4,6 +4,7 @@ from rest_framework import generics
 from accounts.serializers import SignupSerializer
 from rest_framework.permissions import AllowAny
 
+
 User = get_user_model()
 
 

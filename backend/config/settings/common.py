@@ -120,7 +120,7 @@ INTERNAL_IPS = []
 
 AUTH_USER_MODEL = "accounts.User"
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True #FIXME : chagne option
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
 ]

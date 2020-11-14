@@ -8,7 +8,7 @@ import {useHistory} from "react-router-dom";
 
 export default function Signup() {
     const history = useHistory();
-    const APIUrl = "http://localhost:8000/accounts/signup/";
+    const APIUrl = "https://instagram-kqoai.run.goorm.io/accounts/signup/";
 
     const onSignup = ({signupInfo}, {setSignupInfo}) => {
         const {email, phoneNumber: phone_number, username, password} = signupInfo;

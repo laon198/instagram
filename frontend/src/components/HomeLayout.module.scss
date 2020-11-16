@@ -1,0 +1,17 @@
+.wrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-areas: "postList postList sidebar";
+	width: 975px;
+	max-width: 100%;
+	
+	.postList{
+		grid-area:postList;
+		
+	}
+	
+	.sidebar{
+		grid-area:sidebar;
+		
+	}
+}

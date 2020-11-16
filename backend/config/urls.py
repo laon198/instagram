@@ -6,7 +6,7 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
-    path("instagram/", include("instagram.urls")),
+    path("", include("instagram.urls")),
 ]
 
 if settings.DEBUG:

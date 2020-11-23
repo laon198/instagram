@@ -16,5 +16,8 @@ class Post(BaseModel):
     photo = models.ImageField(blank=False, upload_to="instagram/post/%Y/%m/%d")
     location = models.CharField(max_length=20, blank=False)
     
+    class Meta:
+        ordering=['-created_at']
+    
     def __str__(self):
         return self.caption

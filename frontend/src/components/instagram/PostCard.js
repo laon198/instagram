@@ -25,7 +25,7 @@ export default function PostCard({post, refetch}){
 				<div className={styles.avatar} >
 					<Avatar icon={<UserOutlined />} />
 				</div>
-				<div className={styles.username}>{username}</div>
+				<div className={styles.username}><Link to="/accounts/profile" style={{color:"black"}}>{username}</Link></div>
 				<div className={styles.more}>
 					<MoreOutlined onClick={showModal} rotate="90" style={{fontSize:"23px", fontWight:"bold"}}/> 
 					<Modal

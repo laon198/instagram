@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import useAxios from "axios-hooks";
 import {useAppContext} from "../../store";
 import {API_HOST} from "../../Constants";
@@ -13,6 +13,10 @@ export default function PostList() {
 		url : API_HOST+"api/post/",
 		headers
 	});
+	
+	useEffect(()=>{
+		refetch()
+	},[postList])
 	
 	return(
 		<div>

@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
-import useAxios from "axios-hooks";
 import {useAppContext} from "../../store";
 import {API_HOST} from "../../Constants";
 import PostCard from "./PostCard";
+import {useAxios} from "../../api";
 
 export default function PostList() {
 	const {store : {jwtToken}} = useAppContext();
@@ -10,13 +10,14 @@ export default function PostList() {
 	const headers = {Authorization : `JWT ${jwtToken}`};
 	
 	const [{data : postList ,  error, loading}, refetch] = useAxios({
-		url : API_HOST+"api/post/",
+		url : "/api/post/",
 		headers
 	});
-	
-	useEffect(()=>{
-		refetch()
-	},[postList])
+
+	//FIXME : post update
+	// useEffect(()=>{
+	// 	refetch()
+	// },[postList])
 	
 	return(
 		<div>

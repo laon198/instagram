@@ -8,4 +8,7 @@ app_name = "accounts"
 urlpatterns = [
     path("signup/", views.SignupView.as_view(), name="signup"),
     path("login/", obtain_jwt_token, name="login"),
+    path("suggestion/", views.SuggestionView.as_view(), name="suggestion"),
+    path("follow/", views.followView, name="follow"),
+    path("unfollow/", views.unFollowView, name="unfollow"),
 ]

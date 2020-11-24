@@ -14,7 +14,7 @@ SECRET_KEY = "+o_m(vx_gu36ofs%fhn^)^fg7sc)uuhodvu7)vxsl(23oflv@i"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0:80','instagram-kqoai.run.goorm.io'] #FIXME : changed hosts
+ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -121,7 +121,7 @@ INTERNAL_IPS = []
 
 AUTH_USER_MODEL = "accounts.User"
 
-CORS_ORIGIN_ALLOW_ALL = True #FIXME : chagne option
+CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = [
     "http://localhost:3000",
 ]

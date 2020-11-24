@@ -1,0 +1,14 @@
+.suggestionCard{
+  width:300px; margin-top:20px;
+  .header{
+    display: flex;
+    .title{
+      flex-grow: 9;
+      font-size:15px; color:#949494; font-weight: bold;
+    }
+    .more{}
+      flex-grow: 1;
+      font-size:13px; font-weight: bold;
+
+  }
+}

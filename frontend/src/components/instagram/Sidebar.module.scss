@@ -1,0 +1,16 @@
+.account{
+  width:300px; height:100px;
+  display:flex; margin-top:30px;
+  .avatar{
+    flex-grow:2;
+    text-align:left; line-height:100px;
+  }
+  .username{
+    flex-grow:7;
+    text-align:left; line-height:100px;
+  }
+  .switch{
+    flex-grow: 1;
+    text-align:center; line-height:100px;
+  }
+}

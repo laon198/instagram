@@ -18,6 +18,8 @@ class User(AbstractUser):
             ),
         ],
     )
+    follower_set = models.ManyToManyField("self", blank=True)
+    following_set = models.ManyToManyField("self", blank=True)
 
 
 class Profile(models.Model):

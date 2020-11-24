@@ -6,17 +6,17 @@ import Axios from "axios";
 import {notification} from "antd";
 import {SmileOutlined} from "@ant-design/icons";
 import { useAppContext, setToken } from "../../store";
+import {axiosInstance} from "../../api";
 
 export default function Login() {
     const history = useHistory();
-    const APIUrl = "https://instagram-kqoai.run.goorm.io/accounts/login/"; //FIXME : url changed
 	const {store, dispatch} = useAppContext();
 	const location = useLocation();
 	const {from : loginRedirectUrl} = location.state || {from:{pathname:"/"}};
 	
     const onLogin = ({loginInfo, setLoginInfo}) => {
         const data = loginInfo;
-        Axios.post(APIUrl, data)
+        axiosInstance.post("/accounts/login/",data)
             .then(response => {
                 const {data:{token}} = response;
 

@@ -23,3 +23,18 @@ class SignupSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["email", "phone_number", "username", "password"]
+
+
+class SuggestionSerializer(serializers.ModelSerializer):
+    is_follow = serializers.SerializerMethodField()
+
+    def get_is_follow(self, suggestionUser):
+        now_user = self.context["request"].user
+        if now_user.following_set.filter(username=suggestionUser.username).exists():
+            return True
+        else:
+            return False
+
+    class Meta:
+        model = User
+        fields = ["id", "username", "is_follow"]  # FIXME: avatar add, follow add

@@ -1,7 +1,26 @@
 .profile{
   width:100%; grid-area:content;
   .userInfo{
-    width:100%; height:225px; background: #8e8e8e;
+    width:100%; height:225px; border-bottom:1px solid #dbdbdb;
+    display:flex;
+    .avatar{
+      flex-grow: 2; text-align:center; line-height:225px;
+    }
+    .userDesc{
+      flex-grow: 8; margin-left: 60px;
+      .username{
+        height:70px; font-size:30px; line-height:1; padding-top:40px;
+        .btn{
+          font-weight:bold; padding:7px; margin-left:20px;
+        }
+      }
+      .action{
+        font-size:17px; margin-top:20px;
+        span{
+          margin-right:30px;
+        }
+      }
+    }
   }
   .posts{
 

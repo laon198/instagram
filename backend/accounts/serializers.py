@@ -38,3 +38,28 @@ class SuggestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["id", "username", "is_follow"]  # FIXME: avatar add, follow add
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    how_posts = serializers.SerializerMethodField()
+    how_followings = serializers.SerializerMethodField()
+    how_followers = serializers.SerializerMethodField()
+
+    def get_how_posts(self, user):
+        return user.post_set.count()
+
+    def get_how_followings(self, user):
+        return user.following_set.count()
+
+    def get_how_followers(self, user):
+        return user.follower_set.count()
+
+    class Meta:
+        model = User
+        fields = [
+            "id",
+            "username",
+            "how_posts",
+            "how_followings",
+            "how_followers",
+        ]

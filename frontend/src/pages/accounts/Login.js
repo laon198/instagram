@@ -16,11 +16,12 @@ export default function Login() {
 	
     const onLogin = ({loginInfo, setLoginInfo}) => {
         const data = loginInfo;
+        const username = data.username;
         axiosInstance.post("/accounts/login/",data)
             .then(response => {
                 const {data:{token}} = response;
 
-				dispatch(setToken(token));
+				dispatch(setToken(token, username));
 
                 setLoginInfo({});
                 notification.open({

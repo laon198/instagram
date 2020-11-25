@@ -3,7 +3,11 @@ from rest_framework import generics, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from accounts.serializers import SignupSerializer, SuggestionSerializer
+from accounts.serializers import (
+    SignupSerializer,
+    SuggestionSerializer,
+    ProfileSerializer,
+)
 from rest_framework.permissions import AllowAny
 
 
@@ -25,6 +29,12 @@ class SuggestionView(generics.ListAPIView):
         qs = super().get_queryset()
         qs = qs.exclude(username=now_user).exclude(pk__in=now_user.following_set.all())
         return qs
+
+
+class ProfileView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = ProfileSerializer
+    lookup_field = "username"
 
 
 @api_view(["POST"])

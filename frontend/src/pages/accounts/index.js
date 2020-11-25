@@ -14,7 +14,7 @@ export default function Routes({match}){
             <LoginedRouter exact path={`${match.url}/signup`} Component={Signup}/>
             <LoginedRouter exact path={`${match.url}/login`} Component={Login}/>
 			<LoginRequiredRouter exact path={`${match.url}/logout`} Component={Logout}/>
-			<LoginRequiredRouter exact path={`${match.url}/profile`} Component={Profile}/>
+			<LoginRequiredRouter exact path={`${match.url}/profile/:username`} Component={Profile}/>
         </AccountsLayout>
     );
 }

@@ -23,6 +23,20 @@
     }
   }
   .posts{
+    .postsTitle{
+      height:50px; display:flex; justify-content:center;
+      line-height:50px;
+      .postMenu{
+        margin:0 30px; color:#9a918f; font-weight:bold;
+        font-size:14px;
+      }
+      .postMenu:first-child{
+        color:black; border-top:1px solid black;
+      }
+    }
+    .postsContents{
+      display:flex; justify-content: space-between;
+    }
 
   }
 }

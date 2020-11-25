@@ -3,9 +3,10 @@ import AppLayout from "../../components/AppLayout";
 import styles from "./Profile.module.scss";
 import {useParams} from "react-router-dom";
 import {Avatar, Button} from "antd";
-import {UserOutlined} from "@ant-design/icons";
+import {ContactsOutlined, ReadOutlined, TableOutlined, UserOutlined, VideoCameraOutlined} from "@ant-design/icons";
 import {useAppContext} from "../../store";
 import {axiosInstance} from "../../api";
+import ProfilePostPhoto from "../../components/accounts/ProfilePostPhoto";
 
 export default function Profile(){
     const {username : UrlUsername} = useParams();
@@ -44,7 +45,15 @@ export default function Profile(){
 
                 </div>
                 <div className={styles.posts}>
-                    posts
+                    <div className={styles.postsTitle}>
+                        <div className={styles.postMenu}><TableOutlined/> POSTS</div>
+                        <div className={styles.postMenu}><ReadOutlined/> GUIDES</div>
+                        <div className={styles.postMenu}><VideoCameraOutlined/> IGTV</div>
+                        <div className={styles.postMenu}><ContactsOutlined/> TAGGED</div>
+                    </div>
+                    <div className={styles.postsContents}>
+                        {userInfo.photo_list && userInfo.photo_list.map(photo => <ProfilePostPhoto photo={photo} />)}
+                    </div>
                 </div>
             </div>
         </AppLayout>

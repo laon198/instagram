@@ -2,6 +2,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
 from accounts.models import Profile
+from instagram.models import Post
 
 User = get_user_model()
 
@@ -41,9 +42,21 @@ class SuggestionSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    photo_list = serializers.SerializerMethodField()
     how_posts = serializers.SerializerMethodField()
     how_followings = serializers.SerializerMethodField()
     how_followers = serializers.SerializerMethodField()
+
+    def get_photo_list(self, user):
+        post_set = user.post_set.all()
+        photo_list = []
+        for post in post_set:
+            request = self.context["request"]
+            scheme = request.scheme
+            host = request.get_host()
+            url = scheme + "://" + host + post.photo.url
+            photo_list.append(url)
+        return photo_list
 
     def get_how_posts(self, user):
         return user.post_set.count()
@@ -62,4 +75,5 @@ class ProfileSerializer(serializers.ModelSerializer):
             "how_posts",
             "how_followings",
             "how_followers",
+            "photo_list",
         ]

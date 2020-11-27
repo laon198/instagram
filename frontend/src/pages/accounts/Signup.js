@@ -8,12 +8,12 @@ import {useHistory} from "react-router-dom";
 
 export default function Signup() {
     const history = useHistory();
-    const APIUrl = "https://instagram-kqoai.run.goorm.io/accounts/signup/";
+    const APIUrl = "http://localhost:8000/accounts/signup/";
 
     const onSignup = ({signupInfo}, {setSignupInfo}) => {
         const {email, phoneNumber: phone_number, username, password} = signupInfo;
         const data = {email, phone_number, username, password}; //FIX ME
-        const response = Axios.post(APIUrl, data) //FIX ME API URL Change
+        const response = Axios.post(APIUrl, data) //FIXME API URL Change
             .then(response => {
                 setSignupInfo({});
                 notification.open({

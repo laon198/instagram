@@ -28,6 +28,17 @@ class SignupSerializer(serializers.ModelSerializer):
 
 class SuggestionSerializer(serializers.ModelSerializer):
     is_follow = serializers.SerializerMethodField()
+    avatar = serializers.SerializerMethodField()
+
+    def get_avatar(self, suggestionUser):
+        if suggestionUser.profile.avatar:
+            request = self.context["request"]
+            scheme = request.scheme
+            host = request.get_host()
+            url = scheme + "://" + host + suggestionUser.profile.avatar.url
+            return url
+        else:
+            return ""
 
     def get_is_follow(self, suggestionUser):
         now_user = self.context["request"].user
@@ -38,10 +49,15 @@ class SuggestionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ["id", "username", "is_follow"]  # FIXME: avatar add, follow add
+        fields = [
+            "id",
+            "username",
+            "avatar",
+            "is_follow",
+        ]  # FIXME: avatar add, follow add
 
 
-class ProfileSerializer(serializers.ModelSerializer):
+class ProfilePageSerializer(serializers.ModelSerializer):
     photo_list = serializers.SerializerMethodField()
     how_posts = serializers.SerializerMethodField()
     how_followings = serializers.SerializerMethodField()
@@ -77,3 +93,35 @@ class ProfileSerializer(serializers.ModelSerializer):
             "how_followers",
             "photo_list",
         ]
+
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = ["pk", "avatar", "website", "bio", "gender"]
+
+
+class ProfileEditSerializer(serializers.ModelSerializer):
+    profile = ProfileSerializer()
+
+    def update(self, instance, validated_data):
+        profile_data = validated_data.pop("profile")
+        profile = instance.profile
+
+        instance.phone_number = validated_data.get(
+            "phone_number", instance.phone_number
+        )
+        instance.email = validated_data.get("email", instance.email)
+        instance.save()
+
+        profile.website = profile_data.get("website", profile.website)
+        profile.bio = profile_data.get("bio", profile.bio)
+        profile.gender = profile_data.get("gender", profile.gender)
+        profile.avatar = profile_data.get("avatar", profile.avatar)
+        profile.save()
+
+        return instance
+
+    class Meta:
+        model = User
+        fields = ["username", "profile", "email", "phone_number"]

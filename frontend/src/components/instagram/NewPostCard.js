@@ -22,7 +22,7 @@ export default function NewPostCard() {
 		fileList.forEach(file=>{
 			formData.append("photo", file.originFileObj);
 		})
-		
+
 		axiosInstance({
 			method:"post",
 			url:"api/post/",
@@ -33,9 +33,6 @@ export default function NewPostCard() {
 		}).catch(error=>{
 			console.error(error);
 		})
-		
-		
-		
 	};
 	
 	const handleUploadChange = ({fileList}) => setFileList(fileList);

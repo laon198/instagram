@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import AppLayout from "../../components/AppLayout";
 import styles from "./Profile.module.scss";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {Avatar, Button} from "antd";
 import {ContactsOutlined, ReadOutlined, TableOutlined, UserOutlined, VideoCameraOutlined} from "@ant-design/icons";
 import {useAppContext} from "../../store";
@@ -34,7 +34,9 @@ export default function Profile(){
                     <div className={styles.userDesc}>
                         <div className={styles.username}>
                             {userInfo.username}
-                            <Button className={styles.btn}>Edit Profile</Button>
+                            <Link to={`${UrlUsername}/edit`}>
+                                <Button className={styles.btn}>Edit Profile</Button>
+                            </Link>
                         </div>
                         <div className={styles.action}>
                             <span><b>{userInfo.how_posts}  </b>posts</span>

@@ -13,7 +13,7 @@ class User(AbstractUser):
         blank=True,
         validators=[
             RegexValidator(
-                regex="^010-?[1-9]\\d{3}-?\\rd{4}$",
+                regex="^010-?[1-9]\\d{3}-?\\d{4}$",
                 message="Please check your phone number",
             ),
         ],
@@ -26,7 +26,9 @@ class Profile(models.Model):
     class Gender(models.TextChoices):
         MALE = "M", "Male"
         FEMALE = "F", "Female"
+        NONE = "N", "None"
 
+    avatar = models.ImageField(upload_to="accounts/profile/avatar", blank=True)
     website = models.CharField(max_length=100, blank=True)
     bio = models.TextField(blank=True)
-    gender = models.CharField(max_length=1, choices=Gender.choices, blank=True)
+    gender = models.CharField(max_length=1, choices=Gender.choices, default="N")

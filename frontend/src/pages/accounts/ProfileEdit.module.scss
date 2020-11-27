@@ -1,0 +1,65 @@
+.edit{
+  display:flex; margin:30px 0 30px 0;
+
+  .labels{
+    flex-grow:1; font-size:18px; font-weight: bold;
+    text-align: right; margin-right:35px;
+    .avatar{
+      margin-bottom:20px;
+    }
+    .website{
+      margin-bottom: 20px;
+    }
+    .bio{
+      margin-bottom:185px;
+    }
+    .email{
+      margin-bottom:20px;
+    }
+    .phoneNumber{
+      margin-bottom:27px;
+    }
+  }
+  .inputs{
+    flex-grow:9;
+    input{
+      width:350px; height:35px; border:1px solid #dbdbdb;
+      font-size:16px; padding-left:10px;
+    }
+    input[type="file"]{
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip:rect(0,0,0,0); border: 0;
+    }
+    textarea{
+      width:350px; border:1px solid #dbdbdb;
+      height:90px; resize:none; padding-left: 10px;
+    }
+    .avatar{
+      margin-bottom:20px;
+      span{font-size:23px; width:100%; display:block; line-height:1;}
+      label{
+        font-size:15px; font-weight: bold; color:#1897f7;
+        cursor:pointer;
+      }
+    }
+    .website{
+      margin-bottom: 20px;
+    }
+    .bio{
+      margin-bottom:110px;
+    }
+    .email{
+      margin-bottom: 20px;
+    }
+    .phoneNumber{
+      margin-bottom: 20px;
+    }
+    .submit{
+      font-size:15px; font-weight:bold; width:70px;
+      padding:0; text-align: center; color:#ffffff;
+      background-color:#1897f6; border-radius:10%;
+      margin-top:20px; cursor:pointer;
+    }
+  }
+}

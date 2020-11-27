@@ -1,0 +1,17 @@
+.editCard{
+  width:100%; display: flex; grid-area:content;
+  border:1px solid #dbdbdb; margin-top:30px; background:#ffffff;
+  .menu{
+    flex-grow: 0.7; border-right:1px solid #dbdbdb;
+    .menuItems{
+      font-size:17px; height:50px; line-height:50px;
+      padding-left:40px;
+    }
+    .menuItems:hover{
+      background:#fafafa; border-left:2px solid #dbdbdb;
+    }
+  }
+  .contents{
+    flex-grow: 8.5;
+  }
+}

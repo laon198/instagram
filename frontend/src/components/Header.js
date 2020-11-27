@@ -14,7 +14,7 @@ export default function Header() {
     const menu = (
         <Menu>
             <Menu.Item >
-                <Link to={`accounts/profile/${username}`} className="items" >
+                <Link to={`/accounts/profile/${username}`} className="items" >
                     <UserOutlined style={{fontSize:"16px"}}/>
                     프로필
                 </Link>

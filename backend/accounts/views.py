@@ -6,10 +6,13 @@ from rest_framework.response import Response
 from accounts.serializers import (
     SignupSerializer,
     SuggestionSerializer,
+    ProfilePageSerializer,
+    ProfileEditSerializer,
     ProfileSerializer,
 )
 from rest_framework.permissions import AllowAny
 
+from accounts.models import Profile
 
 User = get_user_model()
 
@@ -31,10 +34,21 @@ class SuggestionView(generics.ListAPIView):
         return qs
 
 
-class ProfileView(generics.RetrieveAPIView):
+class ProfilePageView(generics.RetrieveAPIView):
     queryset = User.objects.all()
-    serializer_class = ProfileSerializer
+    serializer_class = ProfilePageSerializer
     lookup_field = "username"
+
+
+class ProfileEditView(generics.RetrieveUpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = ProfileEditSerializer
+    lookup_field = "username"
+
+
+class ProfileView(generics.RetrieveUpdateAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
 
 
 @api_view(["POST"])

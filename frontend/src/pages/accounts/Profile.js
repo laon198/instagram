@@ -30,7 +30,14 @@ export default function Profile(){
         <AppLayout>
             <div className={styles.profile}>
                 <div className={styles.userInfo}>
-                    <div className={styles.avatar}><Avatar size={150} icon={<UserOutlined />} /></div>
+                    <div className={styles.avatar}>
+                        {!userInfo.avatar &&
+                            <Avatar size={150} icon={<UserOutlined />} />
+                        }
+                        {userInfo.avatar &&
+                            <Avatar size={150} src={userInfo.avatar} />
+                        }
+                    </div>
                     <div className={styles.userDesc}>
                         <div className={styles.username}>
                             {userInfo.username}

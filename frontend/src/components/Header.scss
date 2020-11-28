@@ -12,10 +12,13 @@
   }
 
   .top-nav {
+    display: flex; justify-content: space-between;
+    width:230px;
     .icons{
-      font-size:23px;
-      margin:0.5em;
-      color:black;
+      font-size:23px; color:black;
+    }
+    .avatar{
+      cursor:pointer;
     }
   }
 

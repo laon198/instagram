@@ -62,9 +62,20 @@ class ProfilePageSerializer(serializers.ModelSerializer):
     how_posts = serializers.SerializerMethodField()
     how_followings = serializers.SerializerMethodField()
     how_followers = serializers.SerializerMethodField()
+    avatar = serializers.SerializerMethodField()
+
+    def get_avatar(self, profileUser):
+        if profileUser.profile.avatar:
+            request = self.context["request"]
+            scheme = request.scheme
+            host = request.get_host()
+            url = scheme + "://" + host + profileUser.profile.avatar.url
+            return url
+        else:
+            return ""
 
     def get_photo_list(self, user):
-        post_set = user.post_set.all()
+        post_set = user.my_post_set.all()
         photo_list = []
         for post in post_set:
             request = self.context["request"]
@@ -75,7 +86,7 @@ class ProfilePageSerializer(serializers.ModelSerializer):
         return photo_list
 
     def get_how_posts(self, user):
-        return user.post_set.count()
+        return user.my_post_set.count()
 
     def get_how_followings(self, user):
         return user.following_set.count()
@@ -92,13 +103,19 @@ class ProfilePageSerializer(serializers.ModelSerializer):
             "how_followings",
             "how_followers",
             "photo_list",
+            "avatar",
         ]
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    username = serializers.SerializerMethodField()
+
+    def get_username(self, profile):
+        return profile.user.username
+
     class Meta:
         model = Profile
-        fields = ["pk", "avatar", "website", "bio", "gender"]
+        fields = ["pk", "avatar", "website", "bio", "gender", "username"]
 
 
 class ProfileEditSerializer(serializers.ModelSerializer):
@@ -125,3 +142,21 @@ class ProfileEditSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["username", "profile", "email", "phone_number"]
+
+
+class UserSerializer(serializers.ModelSerializer):
+    avatar = serializers.SerializerMethodField()
+
+    def get_avatar(self, nowUser):
+        if nowUser.profile.avatar:
+            request = self.context["request"]
+            scheme = request.scheme
+            host = request.get_host()
+            url = scheme + "://" + host + nowUser.profile.avatar.url
+            return url
+        else:
+            return ""
+
+    class Meta:
+        model = User
+        fields = ["username", "avatar"]

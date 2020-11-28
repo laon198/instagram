@@ -1,0 +1,13 @@
+.comment{
+  display:flex;
+  .message{
+    flex-grow:9.5;
+    span{
+      font-weight:bold; margin-right:0.2em;
+    }
+    margin-top:0.1em;
+  }
+  .like{
+    flex-grow:0.5; text-align:right;
+  }
+}

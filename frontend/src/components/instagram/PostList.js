@@ -22,7 +22,7 @@ export default function PostList() {
 	return(
 		<div>
 			{postList &&
-				postList.map(post => <PostCard post={post} key={post.id} refetch={refetch}/>)
+				postList.map(post => <PostCard post={post} key={post.id} refetch={refetch} headers={headers}/>)
 			}
 		</div>
 	);

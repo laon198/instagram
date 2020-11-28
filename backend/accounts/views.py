@@ -9,6 +9,7 @@ from accounts.serializers import (
     ProfilePageSerializer,
     ProfileEditSerializer,
     ProfileSerializer,
+    UserSerializer,
 )
 from rest_framework.permissions import AllowAny
 
@@ -49,6 +50,12 @@ class ProfileEditView(generics.RetrieveUpdateAPIView):
 class ProfileView(generics.RetrieveUpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
+
+
+class UserView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = "username"
 
 
 @api_view(["POST"])

@@ -1,15 +1,31 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import LogoImg from "../assets/LogoImg.png";
 import "./Header.scss";
-import {Input, Dropdown, Menu, Button} from "antd";
+import {Input, Dropdown, Menu, Button, Avatar} from "antd";
 import {TagsOutlined, MailOutlined, UserOutlined, HomeFilled,
 		CompassOutlined, HeartOutlined, SettingOutlined, UserSwitchOutlined} from "@ant-design/icons";
 import {Link} from "react-router-dom";
 import {useAppContext} from "../store";
+import {axiosInstance} from "../api";
 
 
 export default function Header() {
-    const {store : {username}} = useAppContext();
+    const {store : {jwtToken, username}} = useAppContext();
+    const headers = {Authorization : `JWT ${jwtToken}`};
+    const [avatar, setAvatar] = useState(null);
+
+    useEffect(()=>{
+        axiosInstance({
+            url : `/accounts/${username}/`,
+            method : "get",
+            headers
+        }) .then(response=>{
+            console.log(response);
+            setAvatar(response.data.avatar);
+        }).catch(error=>{
+            console.error(error);
+        })
+    },[]);
 
     const menu = (
         <Menu>
@@ -66,7 +82,10 @@ export default function Header() {
                 <CompassOutlined className="icons"/>
                 <HeartOutlined className="icons"/>
 				 <Dropdown overlay={menu} placement="bottomRight" trigger={['click']} arrow>
-					 <UserOutlined className="icons" />
+                     {avatar ?
+                         <Avatar src={avatar} size={26} className="avatar"/> :
+                         <UserOutlined className="icons"/>
+                     }
 				</Dropdown>
             </div>
         </div>

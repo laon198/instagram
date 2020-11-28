@@ -11,7 +11,7 @@ urlpatterns = [
     path("suggestion/", views.SuggestionView.as_view(), name="suggestion"),
     path("follow/", views.followView, name="follow"),
     path("unfollow/", views.unFollowView, name="unfollow"),
-    path("profile/<int:pk>/", views.ProfileView.as_view(), name="profile"),
+    path("<str:username>/", views.UserView.as_view(), name="my"),
     path(
         "profile/<str:username>/", views.ProfilePageView.as_view(), name="profile_page"
     ),

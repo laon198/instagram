@@ -1,0 +1,15 @@
+.form{
+  width:100%; height:inherit;
+  .text{
+    height:inherit; width:90%;
+    border:none; padding-left:20px;
+  }
+  .text:focus{
+    outline:none;
+  }
+  .submit{
+    height:inherit; width:10%;
+    background:#ffffff; border:none;
+    cursor:pointer; color:#1695f6; font-weight: bold;
+  }
+}

@@ -3,3 +3,4 @@ django-rest-framework
 django-cors-headers
 djangorestframework-jwt
 pillow
+drf-nested-routers

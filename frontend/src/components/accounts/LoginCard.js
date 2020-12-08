@@ -9,11 +9,16 @@ import {Link} from "react-router-dom";
 export default function LoginCard({onLogin}) {
     const [loginInfo, setLoginInfo] = useState({});
 
-    const inputHanlder = e => {
+    const inputHandler = e => {
         const { name, value } = e.target;
         setLoginInfo(prevState => (
             {...prevState, [name]:value}
         ))
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        onLogin({loginInfo});
     };
 
     return (
@@ -25,20 +30,20 @@ export default function LoginCard({onLogin}) {
             }
             content={
                 <>
-                    <Input
-                        className={styles.input} name="username" value={loginInfo.username}
-                        placeholder="Username" onChange={inputHanlder}
-                    />
-                    <Input.Password
-                        className={styles.password} name="password" value={loginInfo.password}
-                        placeholder="Password" onChange={inputHanlder}
-                    />
-                    <Button
-                        className={styles.btn} type="primary"
-                        block onClick={()=>onLogin({loginInfo, setLoginInfo})}
-                    >
-                        Log In
-                    </Button>
+                    <form onSubmit={handleSubmit}>
+                        <Input
+                            className={styles.input} name="username" value={loginInfo.username}
+                            placeholder="Username" onChange={inputHandler}
+                        />
+                        <Input.Password
+                            className={styles.password} name="password" value={loginInfo.password}
+                            placeholder="Password" onChange={inputHandler}
+                        />
+                        <input
+                            type="submit" value="Login"
+                            className={styles.btn}
+                        />
+                    </form>
                     <div className={styles.or}>
                         <div className={styles.beforeline}></div>
                         <div className={styles.main}>OR</div>

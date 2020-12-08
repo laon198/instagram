@@ -1,8 +1,37 @@
 from .common import *
 
-STATICFILES_STORAGE = "backend.storages.StaticAzureStorage"
-DEFAULT_FILE_STORAGE = "backend.storages.MediaAzureStorage"
+DEBUG = False
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(",")
+
+STATICFILES_STORAGE = "config.storages.StaticAzureStorage"
+DEFAULT_FILE_STORAGE = "config.storages.MediaAzureStorage"
 
 AZURE_ACCOUNT_NAME = os.environ["AZURE_ACCOUNT_NAME"]
 AZURE_ACCOUNT_KEY = os.environ["AZURE_ACCOUNT_KEY"]
-# FIXME : 9:18
+
+DATABASES = {
+    "default": {
+        "ENGINE": os.environ.get("DB_ENGINE", "django.db.backends.postgresql"),
+        "HOST": os.environ["DB_HOST"],
+        "USER": os.environ["DB_USER"],
+        "PASSWORD": os.environ["DB_PASSWORD"],
+        "NAME": os.environ.get("DB_NAME", "postgres"),
+    },
+}
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "level": "ERROR",
+            "class": "logging.StreamHandler",
+        },
+    },
+    "loggers": {
+        "django": {
+            "handlers": ["console"],
+            "level": "ERROR",
+        },
+    },
+}

@@ -14,16 +14,18 @@ export default function Login() {
 	const location = useLocation();
 	const {from : loginRedirectUrl} = location.state || {from:{pathname:"/"}};
 	
-    const onLogin = ({loginInfo, setLoginInfo}) => {
-        const data = loginInfo;
-        const username = data.username;
-        axiosInstance.post("/accounts/login/",data)
+    const onLogin = ({loginInfo}) => {
+        const username = loginInfo.username;
+        axiosInstance({
+            url : "/accounts/login/",
+            data : loginInfo,
+            method : "post",
+        })
             .then(response => {
                 const {data:{token}} = response;
 
 				dispatch(setToken(token, username));
 
-                setLoginInfo({});
                 notification.open({
                     message : "Login Success",
                     icon : <SmileOutlined style={{color : "#109ee9"}} />

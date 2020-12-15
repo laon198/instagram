@@ -7,6 +7,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("accounts.urls")),
     path("", include("instagram.urls")),
+    path("rest_auth/", include("rest_auth.urls")),
 ]
 
 if settings.DEBUG:

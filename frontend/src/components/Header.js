@@ -20,7 +20,6 @@ export default function Header() {
             method : "get",
             headers
         }) .then(response=>{
-            console.log(response);
             setAvatar(response.data.avatar);
         }).catch(error=>{
             console.error(error);

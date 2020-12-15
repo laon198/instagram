@@ -15,7 +15,7 @@ class PostViewSet(ModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
 
-    @action(detail=True, methods=["post"])
+    @action(detail=True, methods=["post"]) #FIXME
     def like(self, request, pk):
         post = self.get_object()
         now_user = request.user
@@ -32,7 +32,7 @@ class PostViewSet(ModelViewSet):
     def get_queryset(self):
         now_user = self.request.user
         qs = super().get_queryset()
-        qs = qs.filter(Q(author=now_user) | Q(author__in=now_user.following_set.all()))
+        qs = qs.filter(Q(author=now_user) | Q(author__in=now_user.following_set.all())) #FIXME
         return qs
 
     def perform_create(self, serializer):

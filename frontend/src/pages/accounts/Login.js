@@ -15,14 +15,14 @@ export default function Login() {
 	const {from : loginRedirectUrl} = location.state || {from:{pathname:"/"}};
 	
     const onLogin = ({loginInfo}) => {
-        const username = loginInfo.username;
         axiosInstance({
             url : "/accounts/login/",
             data : loginInfo,
             method : "post",
         })
             .then(response => {
-                const {data:{token}} = response;
+                console.log(response);
+                const {data:{token, user : {username}}} = response;
 
 				dispatch(setToken(token, username));
 

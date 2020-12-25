@@ -32,7 +32,9 @@ export default function Login() {
                 });
                 history.push(loginRedirectUrl);
             }).catch(error => {
-                console.error(error); //Fix Me : change error handle
+                console.log(error.response); //Fix Me : change error handle
+                const msg = error.response.data;
+
         })
     };
     return (

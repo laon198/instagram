@@ -8,7 +8,7 @@ import {useHistory} from "react-router-dom";
 
 export default function Signup() {
     const history = useHistory();
-    const APIUrl = "http://localhost:8000/accounts/signup/";
+    const APIUrl = "http://192.168.0.8:8080/accounts/signup/";
 
     const onSignup = ({signupInfo}, {setSignupInfo}) => {
         const {email, phoneNumber: phone_number, username, password} = signupInfo;

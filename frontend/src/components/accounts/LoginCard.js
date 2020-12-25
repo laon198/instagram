@@ -49,7 +49,9 @@ export default function LoginCard({onLogin}) {
                         });
                         history.push();
                     })
-                    .catch(error => console.error(error))
+                    .catch(error => {
+                        console.log(error.response)
+                    })
             },
             fail : error => {
                   alert(JSON.stringify(error));
@@ -68,8 +70,8 @@ export default function LoginCard({onLogin}) {
                 <>
                     <form onSubmit={handleSubmit}>
                         <Input
-                            className={styles.input} name="email" value={loginInfo.email}
-                            placeholder="Email" onChange={inputHandler}
+                            name="email" value={loginInfo.email} placeholder="email"
+                            onChange={inputHandler} className={styles.input}
                         />
                         <Input.Password
                             className={styles.password} name="password" value={loginInfo.password}

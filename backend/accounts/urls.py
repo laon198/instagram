@@ -14,6 +14,9 @@ urlpatterns = [
 
     path("signup/", views.SignupView.as_view(), name="signup"),
     # path("login/", obtain_jwt_token, name="login"),
+
+    path("chat/list/", views.ChattingView.as_view(), name="chat_list"),
+
     path("suggestion/", views.SuggestionView.as_view(), name="suggestion"),
     path("follow/", views.followView, name="follow"),
     path("unfollow/", views.unFollowView, name="unfollow"),

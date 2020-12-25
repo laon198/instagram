@@ -79,6 +79,15 @@ class SignupView(generics.CreateAPIView):
     serializer_class = SignupSerializer
     permission_classes = [AllowAny]
 
+class ChattingView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = SuggestionSerializer
+
+    def get_queryset(self):
+        now_user = self.request.user
+        qs = super().get_queryset()
+        qs = qs.exclude(pk=now_user.pk).filter(pk__in=now_user.following_set.all())
+        return qs
 
 class SuggestionView(generics.ListAPIView):
     queryset = User.objects.all()

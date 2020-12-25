@@ -77,7 +77,9 @@ export default function Header() {
                 <Link to="/">
                     <HomeFilled className="icons"/>
                 </Link>
-                <MailOutlined className="icons"/>
+                <Link to="/direct/inbox">
+                    <MailOutlined className="icons"/>
+                </Link>
                 <CompassOutlined className="icons"/>
                 <HeartOutlined className="icons"/>
 				 <Dropdown overlay={menu} placement="bottomRight" trigger={['click']} arrow>

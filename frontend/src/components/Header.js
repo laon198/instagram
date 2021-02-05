@@ -20,7 +20,6 @@ export default function Header() {
             method : "get",
             headers
         }) .then(response=>{
-            console.log(response);
             setAvatar(response.data.avatar);
         }).catch(error=>{
             console.error(error);
@@ -78,7 +77,9 @@ export default function Header() {
                 <Link to="/">
                     <HomeFilled className="icons"/>
                 </Link>
-                <MailOutlined className="icons"/>
+                <Link to="/direct/inbox">
+                    <MailOutlined className="icons"/>
+                </Link>
                 <CompassOutlined className="icons"/>
                 <HeartOutlined className="icons"/>
 				 <Dropdown overlay={menu} placement="bottomRight" trigger={['click']} arrow>

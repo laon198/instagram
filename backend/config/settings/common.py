@@ -14,7 +14,7 @@ SECRET_KEY = "+o_m(vx_gu36ofs%fhn^)^fg7sc)uuhodvu7)vxsl(23oflv@i"
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -28,11 +28,24 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     # Third Apps
+    "channels",
     "corsheaders",
     "rest_framework",
+    "rest_framework.authtoken",
+    "rest_auth",
+
+    #allauth
+    "django.contrib.sites",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "rest_auth.registration",
+    "allauth.socialaccount.providers.kakao",
+
     # Local Apps
     "accounts",
     "instagram",
+    "chat",
 ]
 
 MIDDLEWARE = [
@@ -67,6 +80,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
+ASGI_APPLICATION = "config.asgi.application"
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -122,13 +146,12 @@ INTERNAL_IPS = []
 
 AUTH_USER_MODEL = "accounts.User"
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
 ]
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+    "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",), #FIXME
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
         "rest_framework.authentication.SessionAuthentication",
@@ -139,3 +162,26 @@ REST_FRAMEWORK = {
 JWT_AUTH = {
     "JWT_EXPIRATION_DELTA": timedelta(days=1),
 }
+
+#rest_auth
+REST_USE_JWT = True
+
+SITE_ID = 1
+
+SOCIALACCOUNT_PROVIDERS = {
+    'kakao': {
+        'APP': {
+            'client_id': "1e19fb8632e813c918166d5f95f74587",
+            'secret': 514827,
+            'key': ''
+        }
+    }
+}
+
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED=True
+
+REST_AUTH_SERIALIZERS = {
+    "USER_DETAILS_SERIALIZER" : "accounts.serializers.UserDetailSerializer"
+}
+

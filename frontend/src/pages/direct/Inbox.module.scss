@@ -1,0 +1,11 @@
+.inbox{
+  width:930px; height:580px; margin-top:20px;
+  background:#ffffff; border:#dbdbdb 1px solid;
+  display: flex;
+  .list{
+    border-right: 1px solid #dbdbdb; flex-grow:1;
+  }
+  .chat{
+    flex-grow:2;
+  }
+}

@@ -15,14 +15,14 @@ export default function Login() {
 	const {from : loginRedirectUrl} = location.state || {from:{pathname:"/"}};
 	
     const onLogin = ({loginInfo}) => {
-        const username = loginInfo.username;
         axiosInstance({
             url : "/accounts/login/",
             data : loginInfo,
             method : "post",
         })
             .then(response => {
-                const {data:{token}} = response;
+                console.log(response);
+                const {data:{token, user : {username}}} = response;
 
 				dispatch(setToken(token, username));
 
@@ -32,7 +32,8 @@ export default function Login() {
                 });
                 history.push(loginRedirectUrl);
             }).catch(error => {
-                console.error(error); //Fix Me : change error handle
+                console.log(error.response); //Fix Me : change error handle
+
         })
     };
     return (

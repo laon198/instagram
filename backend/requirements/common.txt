@@ -4,3 +4,8 @@ django-cors-headers
 djangorestframework-jwt
 pillow
 drf-nested-routers
+django-rest-auth
+django-allauth
+psycopg2-binary
+channels
+channels_redis

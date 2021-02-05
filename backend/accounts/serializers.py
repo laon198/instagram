@@ -6,6 +6,13 @@ from instagram.models import Post
 
 User = get_user_model()
 
+class JWTSerializer(serializers.Serializer):
+    jwtToken = serializers.CharField()
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["pk", "email", "username"]
 
 class SignupSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)

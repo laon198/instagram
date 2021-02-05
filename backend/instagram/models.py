@@ -17,6 +17,7 @@ class Post(BaseModel):
         User, on_delete=models.CASCADE, related_name="my_post_set"
     )
     caption = models.CharField(max_length=500, blank=False)
+    video = models.FileField(blank=True, upload_to="instagram/video")
     photo = models.ImageField(blank=False, upload_to="instagram/post/%Y/%m/%d")
     location = models.CharField(max_length=20, blank=False)
     like_set = models.ManyToManyField(User, blank=True, related_name="like_post_set")

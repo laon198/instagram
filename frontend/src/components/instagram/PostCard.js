@@ -16,7 +16,7 @@ export default function PostCard({post, refetch, headers}){
 	const [visible, setVisible] = useState(false);
 	const [delter, setDeleter] = useState(false);
 	const {id, author, caption, photo,
-		location, is_like, how_like, created_at} = post;
+		location, is_like, how_like, created_at, video} = post;
 	const {username, avatar} = author;
 	const [like, setLike] = useState({is_like:is_like, how_like:how_like});
 
@@ -92,7 +92,12 @@ export default function PostCard({post, refetch, headers}){
 				</div>
 			</div>
 			<div className={styles.photo}>
-				<img src={photo} alt={caption} className={styles.photo} />
+				{video ?
+					<video controls >
+						<source src={video} type="video/mp4" />
+					</video> :
+					<img src={photo} alt={caption} className={styles.photo} />
+				}
 			</div>
 			<div className={styles.contents}>
 				<div className={styles.interactive}>

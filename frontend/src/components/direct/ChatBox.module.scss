@@ -1,0 +1,16 @@
+.chatBox_you{
+  margin-top:10px; width:100%;
+  .msg{
+    background:#efefef; display: inline-block;
+    border-radius:40%; padding:10px; margin-left:10px;
+  }
+}
+
+.chatBox_me{
+  margin-top:10px; width:100%;
+  text-align: right;
+  .msg{
+    background:#efefef; display: inline-block;
+    border-radius:40%; padding:10px; margin-right:10px;
+  }
+}

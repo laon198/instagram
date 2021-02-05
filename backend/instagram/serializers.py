@@ -52,6 +52,7 @@ class PostSerializer(serializers.ModelSerializer):
             "how_like",
             "caption",
             "photo",
+            "video",
             "location",
             "created_at",
         ]
@@ -60,6 +61,12 @@ class PostSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     author = AuthorSerializer(read_only=True)
     is_like = serializers.SerializerMethodField()
+    how_like = serializers.SerializerMethodField()
+
+    def get_how_like(self, comment):
+        now_user = self.context["request"].user
+        if now_user in comment.like_set.all():
+            return intcomma(comment.like_set.count())
 
     def get_is_like(self, comment):
         now_user = self.context["request"].user
@@ -70,4 +77,4 @@ class CommentSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Comment
-        fields = ["id", "author", "message", "is_like"]
+        fields = ["id", "author", "message", "is_like", "how_like"]

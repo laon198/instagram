@@ -33,7 +33,6 @@ export default function Login() {
                 history.push(loginRedirectUrl);
             }).catch(error => {
                 console.log(error.response); //Fix Me : change error handle
-                const msg = error.response.data;
 
         })
     };

@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.humanize",
     # Third Apps
+    "channels",
     "corsheaders",
     "rest_framework",
     "rest_framework.authtoken",
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     # Local Apps
     "accounts",
     "instagram",
+    "chat",
 ]
 
 MIDDLEWARE = [
@@ -78,6 +80,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
+ASGI_APPLICATION = "config.asgi.application"
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -133,10 +146,8 @@ INTERNAL_IPS = []
 
 AUTH_USER_MODEL = "accounts.User"
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
-    "http://localhost:3000",
-    "http://localhost:3001",
 ]
 
 REST_FRAMEWORK = {
@@ -173,3 +184,4 @@ ACCOUNT_EMAIL_REQUIRED=True
 REST_AUTH_SERIALIZERS = {
     "USER_DETAILS_SERIALIZER" : "accounts.serializers.UserDetailSerializer"
 }
+
